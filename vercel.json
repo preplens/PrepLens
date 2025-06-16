@@ -12,7 +12,7 @@
   "rewrites": [
     {
       "source": "/assets/(.*)",
-      "continue": true
+      "destination": "/assets/$1"
     },
     {
       "source": "/(.*)",
