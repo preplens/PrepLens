@@ -1,31 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
-  Container,
-  Typography,
   Box,
-  Paper,
+  Typography,
+  Button,
   Radio,
   RadioGroup,
   FormControlLabel,
-  Button,
-  LinearProgress,
-  Card,
-  CardContent,
-  Alert,
-  IconButton,
-  Chip,
   FormControl,
-  Snackbar,
+  Alert,
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions,
-  CircularProgress,
+  DialogActions
 } from '@mui/material';
-import {
-  ArrowBack as ArrowBackIcon,
-} from '@mui/icons-material';
-import { useNavigate, useParams } from 'react-router-dom';
+import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import ProgressService from '../services/progressService';
 import { questions } from '../data/questions';

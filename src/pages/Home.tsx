@@ -484,14 +484,6 @@ const Home = () => {
     setIsSubMenuOpen(true);
   };
 
-  const handleSubMenuOpen = (event: React.MouseEvent<HTMLElement>, exam: string) => {
-    clearAllTimeouts();
-    const target = event.currentTarget;
-    setSubMenuAnchor(target);
-    setSelectedExam(exam);
-    setIsSubMenuOpen(true);
-  };
-
   const handleSubMenuClose = () => {
     clearAllTimeouts();
     subMenuTimeoutRef.current = setTimeout(() => {
@@ -523,15 +515,16 @@ const Home = () => {
     handleSubMenuClose();
   };
 
-  const handleOptionClick = (exam: string, option: string) => {
-    const examOption = examOptions.find(e => e.name === exam);
-    const selectedOption = examOption?.options.find(o => o.name === option);
-    if (selectedOption) {
-      navigate(selectedOption.path);
-    }
-    setSubMenuAnchor(null);
-    setSelectedExam(null);
-    setIsSubMenuOpen(false);
+  const handleLanguageChange = (event: SelectChangeEvent) => {
+    setSelectedLanguage(event.target.value);
+  };
+
+  const handleLogin = () => {
+    navigate('/login');
+  };
+
+  const handleSignUp = () => {
+    navigate('/register');
   };
 
   return (
