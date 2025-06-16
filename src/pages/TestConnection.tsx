@@ -1,47 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Container, Typography, Paper, List, ListItem, ListItemText } from '@mui/material';
+import { Typography, Container, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const TestConnection = () => {
-  const [deviceInfo, setDeviceInfo] = useState<any>({});
-
-  useEffect(() => {
-    // Collect device information
-    const info = {
-      userAgent: navigator.userAgent,
-      platform: navigator.platform,
-      language: navigator.language,
-      screenWidth: window.innerWidth,
-      screenHeight: window.innerHeight,
-      connection: (navigator as any).connection ? {
-        effectiveType: (navigator as any).connection.effectiveType,
-        downlink: (navigator as any).connection.downlink,
-        rtt: (navigator as any).connection.rtt,
-      } : 'Not available',
-      timestamp: new Date().toISOString(),
-    };
-    setDeviceInfo(info);
-  }, []);
+  const navigate = useNavigate();
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Connection Test
+    <Container maxWidth="sm" sx={{ mt: 4, textAlign: 'center' }}>
+      <Typography variant="h4" gutterBottom>
+        Test Connection
       </Typography>
-      <Paper sx={{ p: 3 }}>
-        <Typography variant="h6" gutterBottom>
-          Device Information
-        </Typography>
-        <List>
-          {Object.entries(deviceInfo).map(([key, value]) => (
-            <ListItem key={key}>
-              <ListItemText
-                primary={key}
-                secondary={typeof value === 'object' ? JSON.stringify(value) : String(value)}
-              />
-            </ListItem>
-          ))}
-        </List>
-      </Paper>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => navigate('/')}
+        sx={{ mt: 2 }}
+      >
+        Go to Home
+      </Button>
     </Container>
   );
 };
